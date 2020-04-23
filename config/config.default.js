@@ -44,14 +44,18 @@ module.exports = appInfo => {
   };
 
   // 配置跨域
+  // 配置security ，不然会报403权限错误
   config.security = {
-    scrf: {
+    csrf: {
       enable: false,
+      ignoreJSON: true,
     },
     domainWhiteList: [ '*' ],
   };
   config.cors = {
-    origin: '*',
+    // origin: '*',
+    origin: 'http://localhost:3000',
+    credentials: true, // 允许cookie跨域
     allowMethods: 'GET,HEAD,PUT,POST,DELTE,PATCH,OPTIONS',
   };
 
